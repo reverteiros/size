@@ -1,5 +1,5 @@
 
-setwd("C:/Users/saret/Desktop/Clips 4.3")
+setwd("C:/Users/saret/Desktop/size")
 
 library(dplyr)
 library(tidyr)
@@ -78,8 +78,6 @@ ggplot(data = svpd_borago, aes(x=Grains)) +
   theme_classic()+
   facet_grid(Flowers ~ Bees)
 
-res.aov <- aov(Grains ~ Flowers, data = svpd_borago)
-summary(res.aov)
 res.aov <- aov(Grains ~ Bees, data = svpd_borago)
 summary(res.aov)
 

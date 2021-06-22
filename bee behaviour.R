@@ -1,5 +1,5 @@
 
-setwd("C:/Users/saret/Desktop/Clips 4.3")
+setwd("C:/Users/saret/Desktop/size")
 
 library(dplyr)
 library(tidyr)
@@ -23,19 +23,11 @@ ggplot(data = surveys, aes(x=Bees, y=Time_flower,fill=Treatment)) +
 surveys_borago <- surveys %>%
   dplyr::filter(Species=="Borago")
 
-res.aov <- aov(Time_flower ~ Flowers, data = surveys_borago)
-summary(res.aov)
-wilcox.test(Time_flower ~ Flowers, data = surveys_borago)
-
-ggplot(data = surveys_borago, aes(x=Flowers, y=Time_flower)) + 
-  geom_boxplot()+
-  theme_classic()+
-  coord_cartesian(ylim = c(0, 20))
-
-
 res.aov <- aov(Time_flower ~ Bees, data = surveys_borago)
 summary(res.aov)
+
 wilcox.test(Time_flower ~ Bees, data = surveys_borago)
+
 ggplot(data = surveys_borago, aes(x=Bees, y=Time_flower)) + 
   geom_boxplot()+
   theme_classic()+
@@ -70,15 +62,6 @@ ggplot(data = surveys_borago_large, aes(x=Bees, y=Time_flower)) +
 
 surveys_echium <- surveys %>%
   dplyr::filter(Species=="Echium")
-
-res.aov <- aov(Time_flower ~ Flowers, data = surveys_echium)
-summary(res.aov)
-wilcox.test(Time_flower ~ Flowers, data = surveys_echium)
-ggplot(data = surveys_echium, aes(x=Flowers, y=Time_flower)) + 
-  geom_boxplot()+
-  theme_classic()+
-  coord_cartesian(ylim = c(0, 20))
-
 
 res.aov <- aov(Time_flower ~ Bees, data = surveys_echium)
 summary(res.aov)
@@ -141,15 +124,6 @@ ggplot(data = surveys_summarised, aes(x=Bees, y=Flowers_per_minute,fill=Bees)) +
 surveys_borago <- surveys_summarised %>%
   dplyr::filter(Species=="Borago")
 
-res.aov <- aov(Flowers_per_minute ~ Flowers, data = surveys_borago)
-summary(res.aov)
-wilcox.test(Flowers_per_minute ~ Flowers, data = surveys_borago)
-surveys_echium_largeggplot(data = surveys_borago, aes(x=Flowers, y=Flowers_per_minute)) + 
-  geom_boxplot()+
-  theme_classic()+
-  coord_cartesian(ylim = c(0, 20))
-
-
 res.aov <- aov(Flowers_per_minute ~ Bees, data = surveys_borago)
 summary(res.aov)
 wilcox.test(Flowers_per_minute ~ Bees, data = surveys_borago)
@@ -187,13 +161,6 @@ ggplot(data = surveys_borago_large, aes(x=Bees, y=Flowers_per_minute)) +
 
 surveys_echium <- surveys_summarised %>%
   dplyr::filter(Species=="Echium")
-
-res.aov <- aov(Flowers_per_minute ~ Flowers, data = surveys_echium)
-summary(res.aov)
-ggplot(data = surveys_echium, aes(x=Flowers, y=Flowers_per_minute)) + 
-  geom_boxplot()+
-  theme_classic()+
-  coord_cartesian(ylim = c(0, 20))
 
 
 res.aov <- aov(Flowers_per_minute ~ Bees, data = surveys_echium)

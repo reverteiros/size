@@ -1,5 +1,5 @@
 
-setwd("C:/Users/saret/Desktop/Clips 4.3")
+setwd("C:/Users/saret/Desktop/size")
 
 library(dplyr)
 library(tidyr)
@@ -22,6 +22,15 @@ seedsetgraph <- ggplot(data = seedset, aes(x=Bees, y=Seed_set, fill=Bees)) +
   coord_cartesian(ylim = c(1, 4))+
   theme(legend.position = "none")+
   facet_grid(. ~ Flowers)
+
+### compare sizes of bees
+res.aov <- aov(Seed_set ~ Bees, data = seedset)
+summary(res.aov)
+wilcox.test(Seed_set ~ Bees, data = seedset)
+
+ggplot(data = seedset, aes(y=Seed_set,x=Bees)) + 
+  geom_boxplot()+
+  theme_classic()
 
 
 ############# Seed set
@@ -81,6 +90,16 @@ ggplot(data = fruitset, aes(x=Fruit_set)) +
   geom_histogram()+
   # theme_classic()+
   facet_grid(Flowers ~ Bees) #flowers rows bees columns
+
+
+res.aov <- aov(Fruit_set ~ Bees, data = fruitset)
+summary(res.aov)
+wilcox.test(Fruit_set ~ Bees, data = fruitset)
+
+ggplot(data = fruitset, aes(y=Fruit_set,x=Bees)) + 
+  geom_boxplot()+
+  theme_classic()
+
 
 fruitset_large <- fruitset %>%
   dplyr::filter(Flowers == "Large") 

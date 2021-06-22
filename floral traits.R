@@ -15,6 +15,8 @@ traits <- read.table("floral_traits.txt",header=T) %>%
   dplyr::summarize(Surface=mean(Surface.mm2.),Diameter=mean(Diameter),Depth=mean(Depth))
 
 
+plot(traits$Diameter~traits$Depth)
+
 ggplot(data = traits, aes(x=Species, y=Depth,fill=Flowers)) + 
   geom_boxplot(aes(fill=Flowers))+
   theme_classic()+
